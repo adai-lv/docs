@@ -7,9 +7,13 @@
   <meta name="description" content="KuPug Document, 技术文档">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/gitalk.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
 </head>
 <body>
   <div id="app">加载中</div>
+  <div id="gitalk-container"></div>
   <script>
     window.$docsify = {
       name: '',
@@ -25,10 +29,25 @@
         fontsize:'0.9em',
         color:'rgb(90,90,90)',
         language:'chinese'
-      }
+      },
+      ga: 'UA-135893117-2'
     }
+  </script>
+  <script>
+    const gitalk = new Gitalk({
+      clientID: '6a4a9204b06e867ef9ca',
+      clientSecret: 'f56991f6ee00daf7c196bd0780eb880ea250fb66',
+      repo: 'docs',
+      owner: 'kupug',
+      admin: ['kupug'],
+      // facebook-like distraction free mode
+      distractionFreeMode: true
+    })
+
+    gitalk.render('gitalk-container')
   </script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
   <script src="//unpkg.com/docsify-count/dist/countable.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/ga.min.js"></script>
 </body>
 </html>

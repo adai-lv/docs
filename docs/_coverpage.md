@@ -1,4 +1,4 @@
-![logo](_media/logo.png)
+![logo](https://cdn.jsdelivr.net/gh/kupug/docs/docs/_media/logo.png)
 
 # KuPug
 
@@ -9,4 +9,4 @@
 [开始阅读](#开始)
 
 <!-- 背景图片 -->
-![](_media/bg1.jpg)
+![](https://cdn.jsdelivr.net/gh/kupug/docs/docs/_media/bg1.jpg)
