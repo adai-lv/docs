@@ -1,29 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  
   <title>KuPug Docs</title>
+
+  <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="keywords" content="KuOAuth,第三方授权登录,OAuth2" />
   <meta name="description" content="KuPug Document, 技术文档">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+  <link rel="shortcut icon" href="_media/logo.png">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.css">
+
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/gitalk.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
 </head>
 <body>
-  <div id="app">加载中</div>
-  <div id="gitalk-container" style="margin: 20px 100px 50px 350px;"></div>
+  <div data-app id="app">loading...</div>
   <script>
     window.$docsify = {
+      el: "#app",
       name: '',
       repo: 'https://github.com/kupug',
       coverpage: true,
       coverpage: ['/', '/kuoauth/', '/kupay/'],
       loadNavbar: true,
       loadSidebar: true,
+      maxLevel: 4,
       subMaxLevel: 2,
-      auto2top: true,
+      formatUpdated: '{YYYY}/{MM}/{DD} {HH}:{mm}:{ss}',
+      notFoundPage: '_404.md',
+      search: {
+        maxAge: 86400000,
+        noData: {
+          '/': '没有找不到你预期的结果'
+        },
+        paths: 'auto',
+        placeholder: {
+          '/': '输入您的关键词搜索'
+        }
+      },
+      plugins: [
+        function (hook, vm) {
+          var updated_info = [
+            '<p style="text-align: right; margin-top: 10px">',
+            '最近更新于： {docsify-updated} ',
+            '</p>'
+          ].join('');
+
+          var footer = [
+            '<hr/>',
+            '<footer style="text-align: center">',
+            '<a href="https://github.com/kupug" target="_blank">Github</a> · <a href="https://gitee.com/kupug"  target="_blank">Gitee</a> &copy;2020 published with <a href="https://github.com/docsifyjs/docsify" target="_blank">docsify</a>.',
+            '</footer>'
+          ].join('');
+
+          hook.beforeEach(function (html) {
+            return  html + updated_info
+          });
+          hook.afterEach(function (html) {
+            return html + footer
+          });
+        }
+      ],
+      markdown: {
+          renderer: {
+              code: function(code, lang) {
+                  if (lang === "mermaid") {
+                      return (
+                          '<div class="mermaid">' + mermaid.render('mermaid-svg-' + num++, code) + "</div>"
+                      );
+                  }
+                  return this.origin.code.apply(this, arguments);
+              }
+          }
+      },
       count:{
         countable:true,
         fontsize:'0.9em',
@@ -33,21 +87,32 @@
       ga: 'UA-135893117-2'
     }
   </script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1.20.0/components/prism-java.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1.20.0/components/prism-sql.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/gitalk.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-count@1.1.0/dist/countable.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/ga.min.js"></script>
+
   <script>
+    mermaid.initialize({startOnLoad:true});
+
     const gitalk = new Gitalk({
       clientID: '6a4a9204b06e867ef9ca',
       clientSecret: 'f56991f6ee00daf7c196bd0780eb880ea250fb66',
       repo: 'docs',
       owner: 'kupug',
       admin: ['kupug'],
-      // facebook-like distraction free mode
+      id: location.hash,
       distractionFreeMode: false
     })
 
     gitalk.render('gitalk-container')
   </script>
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
-  <script src="//unpkg.com/docsify-count/dist/countable.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/ga.min.js"></script>
 </body>
 </html>
