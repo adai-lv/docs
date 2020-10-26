@@ -2,11 +2,8 @@
 - **博文**
     - [2020](blog/2020/)
 - **专栏**
-    - [数据结构](datastructure/)
-    - [算法](algorithm/)
-    - [设计模式](design/)
+    - [OAuth2.0](oauth2/)
 - **教程**
     - [Java](java/)
-    - [Python](python/)
 - **项目**
     - [KuOAuth](kuoauth/)
