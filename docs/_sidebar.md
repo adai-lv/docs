@@ -1,3 +1,5 @@
+- **博文**
+    - [2020](blog/2020/)
 - **专栏**
     - [数据结构](datastructure/)
     - [算法](algorithm/)
@@ -7,4 +9,3 @@
     - [Python](python/)
 - **项目**
     - [KuOAuth](kuoauth/)
-    - [KuPay](kupay/)

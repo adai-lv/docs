@@ -12,11 +12,7 @@
 
   <link rel="shortcut icon" href="_media/logo.png">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.css">
-
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/gitalk.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
 </head>
 <body>
   <div data-app id="app">loading...</div>
@@ -45,12 +41,6 @@
       },
       plugins: [
         function (hook, vm) {
-          var updated_info = [
-            '<p style="text-align: right; margin-top: 50px">',
-            '最近更新于： {docsify-updated} ',
-            '</p>'
-          ].join('');
-
           var footer = [
             '<hr/>',
             '<footer style="text-align: center">',
@@ -59,10 +49,6 @@
             '&copy;2020 Published with <a href="https://github.com/docsifyjs/docsify" target="_blank">docsify</a>.',
             '</footer>'
           ].join('');
-
-          hook.beforeEach(function (html) {
-            return  html + updated_info
-          });
           hook.afterEach(function (html) {
             return html + footer
           });
@@ -95,26 +81,12 @@
   <script src="//cdn.jsdelivr.net/npm/prismjs@1.20.0/components/prism-java.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/prismjs@1.20.0/components/prism-sql.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/gitalk.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify-count@1.1.0/dist/countable.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/ga.min.js"></script>
 
   <script>
     mermaid.initialize({startOnLoad:true});
-
-    const gitalk = new Gitalk({
-      clientID: '6a4a9204b06e867ef9ca',
-      clientSecret: 'f56991f6ee00daf7c196bd0780eb880ea250fb66',
-      repo: 'docs',
-      owner: 'kupug',
-      admin: ['kupug'],
-      id: location.hash,
-      distractionFreeMode: false
-    })
-
-    gitalk.render('gitalk-container')
   </script>
 </body>
 </html>
