@@ -10,32 +10,39 @@
 
 例如，[RFC6750][RFC6750]定义的“bearer”令牌类型简单的在请求中包含访问令牌字符串来使用：
 
-    GET /resource/1 HTTP/1.1
-    Host: example.com
-    Authorization: Bearer F_9.B5f-4.1JqM
+```
+GET /resource/1 HTTP/1.1
+Host: example.com
+
+Authorization: Bearer F_9.B5f-4.1JqM
+```
     
 而[OAuth-HTTP-MAC]定义的“mac”令牌类型通过与许可类型一起颁发用于对HTTP请求中某些部分签名的消息认证码（MAC）的密钥来使用。
 
-    GET /resource/1 HTTP/1.1
-    Host: example.com
-    Authorization: MAC id="h480djs93hd8",nonce="274312:dj83hs9s",mac="kDZvddkndxvhGRXZhvuDjEWhGeE="
+```
+GET /resource/1 HTTP/1.1
+Host: example.com
+
+Authorization: MAC id="h480djs93hd8",nonce="274312:dj83hs9s",mac="kDZvddkndxvhGRXZhvuDjEWhGeE="
+```
     
 提供上面的例子仅作说明用途。建议开发人员在使用前查阅[RFC6750][RFC6750]和[OAuth-HTTP-MAC]规范。
 
-每一种访问令牌类型的定义指定与“access_token”响应参数一起发送到客户端的额外属性。它还定义了HTTP验证方法当请求受保护资源时用于包含访问令牌。
+每一种访问令牌类型的定义指定与 `access_token` 响应参数一起发送到客户端的额外属性。它还定义了HTTP验证方法当请求受保护资源时用于包含访问令牌。
 
 ## 错误响应
 
-如果资源访问请求失败，资源服务器应该通知客户端该错误。虽然规定这些错误响应超出了本规范的范围，但是本文档在[11.4](../Section11/11.4.md)节建立了一张公共注册表，用作OAuth令牌身份验证方案之间分享的错误值。
+如果资源访问请求失败，资源服务器应该通知客户端该错误。虽然规定这些错误响应超出了本规范的范围，但是本文档在[OAuth扩展错误注册表][OAuth扩展错误注册表]节建立了一张公共注册表，用作OAuth令牌身份验证方案之间分享的错误值。
 
 主要为OAuth令牌身份验证设计的新身份验证方案应该定义向客户端提供错误状态码的机制，其中允许的错误值限于本规范建立的错误注册表中。
 
-这些方案可以限制有效的错误代码是注册值的子集。如果错误代码使用命名参数返回，该参数名称应该是“error”。
+这些方案可以限制有效的错误代码是注册值的子集。如果错误代码使用命名参数返回，该参数名称应该是 `error`。
 
 其他能够被用于OAuth令牌身份验证的方案，但不是主要为此目的而设计的，可以帮顶他们的错误值到相同方式的注册表项。
 
-新的认证方案也可以选择指定使用“error_description”和"error_uri"参数，用于以本文档中用法相同的方式的返回错误信息。
+新的认证方案也可以选择指定使用 `error_description` 和 `error_uri` 参数，用于以本文档中用法相同的方式的返回错误信息。
 
+[OAuth扩展错误注册表]: oauth2/section09#OAuth扩展错误注册表 "OAuth扩展错误注册表"
 [RFC2617]: http://tools.ietf.org/html/rfc2617 "HTTP Authentication: Basic and Digest Access Authentication"
 [RFC6750]: http://tools.ietf.org/html/rfc6750 "The OAuth 2.0 Authorization Framework: Bearer Token Usage"
 [RFC6750]: http://tools.ietf.org/html/rfc6750 "The OAuth 2.0 Authorization Framework: Bearer Token Usage"
