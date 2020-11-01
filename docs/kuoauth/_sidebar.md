@@ -1,9 +1,8 @@
-- **快速开始**
+- [快速入门](kuoauth/#快速入门)
+- [OAuth流程](kuoauth/oauth2)
 - **集成平台**
     - [Gitee平台](kuoauth/gitee)
     - [Github平台](kuoauth/github)
     - [qq平台](kuoauth/qq)
-    - [微信开放平台](kuoauth/wechat)
+    - [微信开放平台](kuoauth/wechatop)
     - [微信公众平台](kuoauth/wechatmp)
-    - [微博平台](kuoauth/weibo)
-    - [钉钉平台](kuoauth/dingtalk)

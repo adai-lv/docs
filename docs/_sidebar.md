@@ -2,7 +2,5 @@
     - [2020](blog/2020/)
 - **专栏**
     - [OAuth2.0](oauth2/)
-- **教程**
-    - [Java](java/)
 - **项目**
     - [KuOAuth](kuoauth/)

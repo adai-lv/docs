@@ -1,0 +1,37 @@
+* [目录](design-patterns/)
+* 七大设计原则
+    * [开闭原则](design-patterns/OCP)
+    * [⾥⽒替换原则](design-patterns/LSP)
+    * [依赖倒置原则](design-patterns/DIP)
+    * [单⼀职责原则](design-patterns/SRP)
+    * [接⼝隔离原则](design-patterns/ISP)
+    * [迪米特原则](design-patterns/LOD)
+    * [合成复用原则](design-patterns/CRP)
+
+* 创建型模式
+    * [工厂方法模式](design-patterns/factoryMethod)
+    * [抽象工厂模式](design-patterns/abstractFactory)
+    * [建造者模式](design-patterns/builder)
+    * [原型模式](design-patterns/prototype)
+    * [单例模式](design-patterns/singleton)
+    
+* 结构型模式
+    * [代理模式](design-patterns/proxy)
+    * [适配器模式](design-patterns/adapter)
+    * [桥接模式](design-patterns/bridge)
+    * [装饰模式](design-patterns/decorator)
+    * [外观模式](design-patterns/facade)
+    * [享元模式](design-patterns/flyweight)
+    * [组合模式](design-patterns/composite)
+* 行为型模式
+    * [模板方法模式](design-patterns/templateMethod)
+    * [策略模式](design-patterns/strategy)
+    * [命令模式](design-patterns/command)
+    * [职责链模式](design-patterns/chain)
+    * [状态模式](design-patterns/state)
+    * [观察者模式](design-patterns/observer)
+    * [中介者模式](design-patterns/mediator)
+    * [迭代器模式](design-patterns/iterator)
+    * [访问者模式](design-patterns/visitor)
+    * [备忘录模式](design-patterns/memento)
+    * [解释器模式](design-patterns/interpreter)

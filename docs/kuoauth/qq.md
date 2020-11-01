@@ -1,28 +1,14 @@
-# Github 授权登录
+# QQ 授权登录
 
 ## 创建应用
 
 1. **注册账号**
 
-注册Github账号：[https://github.com/](https://github.com/)。如果已有则忽略该步骤，直接进入第二步。 
+注册QQ互联平台账号：[https://connect.qq.com/](https://connect.qq.com/)。如果已有则忽略该步骤，直接进入第二步。 
 
 2. **创建应用**
 
-在 [设置](https://github.com/settings/profile) -> [开发者应用](https://github.com/settings/developers)，创建要接入 `Github` 的应用。 
-
-**应用列表页面**
-
-![应用列表页面](_media/images/github01.png)
-
-**创建应用页面**
-
-![创建应用页面](_media/images/github02.png)
-
-- `应用回调地址` **重点**，该地址为用户授权后需要跳转到的自己网站的地址，默认携带一个code参数
-
-**应用详情页面**
-
-![应用详情页面](_media/images/github03.png)
+操作详情，参考官方文档：[接入指南-创建应用](https://wiki.connect.qq.com/__trashed-2)
 
 **注:** 保存好这三个信息：`Client ID`、`Client Secret` 和 `应用回调地址`，集成 `KuOAuth` 时会使用到。
 
@@ -50,7 +36,7 @@ KuOAuthConfig config = KuOAuthConfig.builder()
     .build();
 
 // 创建授权登录平台对象
-KuOAuthPlatform platform = PlatformFactory.newInstance(Platform.GITHUB, config);
+KuOAuthPlatform platform = PlatformFactory.newInstance(Platform.QQ, config);
 ```
 
 配置信息如下：
@@ -60,7 +46,8 @@ KuOAuthPlatform platform = PlatformFactory.newInstance(Platform.GITHUB, config);
 - String `clientSecret` 客户端Secret，对应平台的 `Client Secret`；
 - String `redirectUri` 授权登录成功后的回调地址，用于通知客户端接收授权码 `code` 和其它相关信息；
 - List `scopes` 授权 scope 的值，如果你的应用开通了更多 `scope`， 可以重置它；
-- boolean `ignoreCheckState` 忽略校验 `state` 参数，默认不开启，<strong style="color:red">如非特殊需要，不建议开启这个配置</strong>。
+- boolean `ignoreCheckState` 忽略校验 `state` 参数，默认不开启，<strong style="color:red">如非特殊需要，不建议开启这个配置</strong>；
+- boolean `unionId` 是否需要申请 `unionid`。如果个人开发者账号中申请了该权限，可以将该值置为true，在获取 `openId` 时就会同步获取 `unionId`。参考链接：[UnionID介绍](http://wiki.connect.qq.com/unionid%E4%BB%8B%E7%BB%8D)
 
 
 3. **获取授权链接**
@@ -137,10 +124,11 @@ public class GiteeAuthController {
             .redirectUri("应用回调地址")
             .build();
             
-        return PlatformFactory.newInstance(Platform.GITHUB, config);
+        return PlatformFactory.newInstance(Platform.QQ, config);
     }
 }
 ```
 
 ## 参考资料
-- [Building OAuth Apps](https://docs.github.com/en/free-pro-team@latest/developers/apps/building-oauth-apps)
+- [接入指南](https://wiki.connect.qq.com/%E6%88%90%E4%B8%BA%E5%BC%80%E5%8F%91%E8%80%85)
+- [网站开发流程](https://wiki.connect.qq.com/%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C_oauth2-0)
