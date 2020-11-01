@@ -47,7 +47,7 @@ KuOAuthConfig config = KuOAuthConfig.builder()
 
 // 创建授权登录平台对象
 // 授权平台类型，可以参考：com.kupug.kuoauth.model.Platform
-KuOAuthPlatform platform = PlatformFactory.newInstance(Platform.xxx, kuOAuthConfig);
+KuOAuthPlatform platform = PlatformFactory.newInstance(Platform.xxx, config);
 ```
 
 3. **获取授权链接**

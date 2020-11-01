@@ -10,18 +10,24 @@
 
 在 [设置](https://gitee.com/profile/account_information) -> [第三方应用](https://gitee.com/oauth/applications)，创建要接入码云的应用。 
 
+**个人资料设置页面**
+
 ![设置页面](_media/images/gitee01.png)
 
-![设置页面](_media/images/gitee02.png)
+**应用列表页面**
 
-**创建页面**
-![设置页面](_media/images/gitee03.png)
+![应用列表页面](_media/images/gitee02.png)
+
+**创建应用页面**
+
+![创建应用页面](_media/images/gitee03.png)
 
 - `应用回调地址` **重点**，该地址为用户授权后需要跳转到的自己网站的地址，默认携带一个code参数
 - `权限` 根据页面提示操作，默认勾选第一个就行。
 
 **应用详情页面**
-![设置页面](_media/images/gitee04.png)
+
+![应用详情页面](_media/images/gitee04.png)
 
 **注:** 保存好这三个信息：`Client ID`、`Client Secret` 和 `应用回调地址`，集成 `KuOAuth` 时会使用到。
 
@@ -49,7 +55,7 @@ KuOAuthConfig config = KuOAuthConfig.builder()
     .build();
 
 // 创建授权登录平台对象
-KuOAuthPlatform platform = PlatformFactory.newInstance(Platform.GITEE, kuOAuthConfig);
+KuOAuthPlatform platform = PlatformFactory.newInstance(Platform.GITEE, config);
 ```
 
 配置信息如下：
@@ -92,19 +98,18 @@ KuOAuthLogin oAuthLogin = platform.login(oAuthCallback);
 > 假设产品应用是前后端分离的
 
 ```java
-import com.kupug.kuoauth.model.KuOAuthConfig;
+import com.kupug.kuoauth.KuOAuthPlatform;
 import com.kupug.kuoauth.model.KuOAuthCallback;
+import com.kupug.kuoauth.model.KuOAuthConfig;
 import com.kupug.kuoauth.model.KuOAuthLogin;
 import com.kupug.kuoauth.model.Platform;
-import com.kupug.kuoauth.utils.OAuthUtils;
 import com.kupug.kuoauth.platform.PlatformFactory;
-import com.kupug.kuoauth.KuOAuthPlatform;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.kupug.kuoauth.utils.OAuthUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/gitee")
@@ -137,7 +142,7 @@ public class GiteeAuthController {
             .redirectUri("应用回调地址")
             .build();
             
-        return PlatformFactory.newInstance(Platform.GITEE, kuOAuthConfig);
+        return PlatformFactory.newInstance(Platform.GITEE, config);
     }
 }
 ```

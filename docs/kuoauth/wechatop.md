@@ -1,28 +1,14 @@
-# Github 授权登录
+# 微信授权登录
 
 ## 创建应用
 
 1. **注册账号**
 
-注册Github账号：[https://github.com/](https://github.com/)。如果已有则忽略该步骤，直接进入第二步。 
+注册微信开放平台账号：[https://open.weixin.qq.com/](https://open.weixin.qq.com/)。如果已有则忽略该步骤，直接进入第二步。 
 
 2. **创建应用**
 
-在 [设置](https://github.com/settings/profile) -> [开发者应用](https://github.com/settings/developers)，创建要接入 `Github` 的应用。 
-
-**应用列表页面**
-
-![应用列表页面](_media/images/github01.png)
-
-**创建应用页面**
-
-![创建应用页面](_media/images/github02.png)
-
-- `应用回调地址` **重点**，该地址为用户授权后需要跳转到的自己网站的地址，默认携带一个code参数
-
-**应用详情页面**
-
-![应用详情页面](_media/images/github03.png)
+操作详情，参考官方文档：[网站应用开发](https://open.weixin.qq.com/cgi-bin/frame?t=home/web_tmpl&lang=zh_CN)
 
 **注:** 保存好这三个信息：`Client ID`、`Client Secret` 和 `应用回调地址`，集成 `KuOAuth` 时会使用到。
 
@@ -50,7 +36,7 @@ KuOAuthConfig config = KuOAuthConfig.builder()
     .build();
 
 // 创建授权登录平台对象
-KuOAuthPlatform platform = PlatformFactory.newInstance(Platform.GITHUB, config);
+KuOAuthPlatform platform = PlatformFactory.newInstance(Platform.WECHAT, config);
 ```
 
 配置信息如下：
@@ -137,10 +123,10 @@ public class GiteeAuthController {
             .redirectUri("应用回调地址")
             .build();
             
-        return PlatformFactory.newInstance(Platform.GITHUB, config);
+        return PlatformFactory.newInstance(Platform.WECHAT, config);
     }
 }
 ```
 
 ## 参考资料
-- [Building OAuth Apps](https://docs.github.com/en/free-pro-team@latest/developers/apps/building-oauth-apps)
+- [微信登录功能](https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_Login/Wechat_Login.html)

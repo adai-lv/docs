@@ -6,5 +6,3 @@
     - [qq平台](kuoauth/qq)
     - [微信开放平台](kuoauth/wechatop)
     - [微信公众平台](kuoauth/wechatmp)
-    - [微博平台](kuoauth/weibo)
-    - [钉钉平台](kuoauth/dingtalk)
